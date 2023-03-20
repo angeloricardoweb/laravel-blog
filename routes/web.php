@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\PostsController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -15,19 +17,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
+
+Route::get('/', [HomeController::class, 'index'])->name('home.index');
 Route::get('/posts/{slug}', [PostController::class, 'show'])->name('posts.show');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+->middleware(['auth', 'verified'])
+->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+    Route::get('/admin/posts', [PostsController::class, 'index'])->name('admin.posts.index');
     Route::get('/profile', [ProfileController::class, 'edit'])->name(
         'profile.edit'
     );

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('slug');
             $table->string('descricao')->nullable();
             $table->text('body');
-            $table->boolean('ativo')->default(true);
+            $table->boolean('ativo')->default(false);
             $table->string('thumb')->nullable();
 
             $table->timestamps();

@@ -9,7 +9,8 @@
 </head>
 
 <body>
-    {{ $post }}
+    {{ $post->titulo }}
+    {{ $post->created_at->format('d/M/Y') }}
 
 </body>
 
