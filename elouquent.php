@@ -16,6 +16,7 @@ class ExampleController extends Controller
         $posts = Post::all(); //retorna todos os posts
         $posts = Post::where('ativo', true)->get(); //retorna todos os posts ativos
         $posts = Post::paginate(5); //retorna todos os posts com paginação
+        $posts = Post::orderBy('id', 'desc')->paginate(10); //retorna todos os posts com paginação e ordenação
         $posts = Post::where('ativo', true)->paginate(5); //retorna todos os posts ativos com paginação (paginação pode ser executada apenas em querys)
         $post = Post::where('slug', $post)->firstOrFail(); //retorna 404 se falhar
     }
